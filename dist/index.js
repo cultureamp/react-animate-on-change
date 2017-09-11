@@ -1,14 +1,18 @@
 'use strict';
 
-var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -23,26 +27,25 @@ var events = {
   end: ['animationend', 'webkitAnimationEnd', 'mozAnimationEnd', 'oanimationend', 'MSAnimationEnd'],
   startRemoved: [],
   endRemoved: []
+
+  /**
+   * # AnimateOnChange component.
+   * Adds `animationClassName` when `animate` is true, then removes
+   * `animationClassName` when animation is done (event `animationend` is
+   * triggered).
+   *
+   * @prop {string} baseClassName - Base class name.
+   * @prop {string} animationClassName - Class added when `animate == true`.
+   * @prop {bool} animate - Wheter to animate component.
+   */
 };
-
-/**
- * # AnimateOnChange component.
- * Adds `animationClassName` when `animate` is true, then removes
- * `animationClassName` when animation is done (event `animationend` is
- * triggered).
- *
- * @prop {string} baseClassName - Base class name.
- * @prop {string} animationClassName - Class added when `animate == true`.
- * @prop {bool} animate - Wheter to animate component.
- */
-
-var AnimateOnChange = (function (_Component) {
+var AnimateOnChange = function (_Component) {
   _inherits(AnimateOnChange, _Component);
 
   function AnimateOnChange(props) {
     _classCallCheck(this, AnimateOnChange);
 
-    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(AnimateOnChange).call(this, props));
+    var _this = _possibleConstructorReturn(this, (AnimateOnChange.__proto__ || Object.getPrototypeOf(AnimateOnChange)).call(this, props));
 
     _this.state = { animating: false, clearAnimationClass: false };
     _this.animationStart = _this.animationStart.bind(_this);
@@ -137,13 +140,13 @@ var AnimateOnChange = (function (_Component) {
   }]);
 
   return AnimateOnChange;
-})(_react.Component);
+}(_react.Component);
 
 AnimateOnChange.propTypes = {
-  children: _react2.default.PropTypes.any.isRequired,
-  animate: _react2.default.PropTypes.bool.isRequired,
-  baseClassName: _react2.default.PropTypes.string.isRequired,
-  animationClassName: _react2.default.PropTypes.string.isRequired
+  children: _propTypes2.default.any.isRequired,
+  animate: _propTypes2.default.bool.isRequired,
+  baseClassName: _propTypes2.default.string.isRequired,
+  animationClassName: _propTypes2.default.string.isRequired
 };
 
 exports.default = AnimateOnChange;
